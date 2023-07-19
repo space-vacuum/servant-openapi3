@@ -1,4 +1,13 @@
-resolver: lts-16.8
+resolver: lts-21.3
 packages:
 - '.'
 - example/
+flags:
+  aeson-pretty:
+    lib-only: true
+allow-newer: true
+extra-deps:
+- git: https://github.com/space-vacuum/aeson-pretty
+  commit: 27a3cca66ef4d225b83b57646a279ec9e0c2f970
+- git: https://github.com/space-vacuum/openapi3
+  commit: 25d4151b01f9b0fa241005be891fe2f1e30879ba

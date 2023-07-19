@@ -2,3 +2,11 @@ packages:
     servant-openapi3.cabal,
     example/example.cabal
 tests: true
+source-repository-package
+  type: git
+  location: https://github.com/space-vacuum/aeson-pretty
+  tag: 27a3cca66ef4d225b83b57646a279ec9e0c2f970
+source-repository-package
+  type: git
+  location: https://github.com/space-vacuum/openapi3
+  tag: 25d4151b01f9b0fa241005be891fe2f1e30879ba
