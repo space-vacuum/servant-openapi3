@@ -8,7 +8,6 @@ module Servant.OpenApi.Internal.Test where
 
 import           Data.Aeson                     (ToJSON (..))
 import qualified Data.Aeson.Encode.Pretty       as P
-import qualified Data.ByteString.Lazy           as BSL
 import           Data.OpenApi                   (Pattern, ToSchema, toSchema)
 import           Data.OpenApi.Schema.Validation
 import           Data.Text                      (Text)
@@ -56,7 +55,7 @@ import           Servant.OpenApi.Internal.TypeLevel
 --   UserId...
 -- ...
 -- Finished in ... seconds
--- ...2 examples, 0 failures...
+-- 2 examples, 0 failures...
 --
 -- For the test to compile all body types should have the following instances:
 --
@@ -122,7 +121,7 @@ validateEveryToJSONWithPatternChecker checker _ = props
 --   [Char]...
 -- ...
 -- Finished in ... seconds
--- ...3 examples, 0 failures...
+-- 3 examples, 0 failures...
 props :: forall p p'' cs xs. TMap (Every (Typeable ': Show ': Arbitrary ': cs)) xs =>
   p cs                                          -- ^ A list of constraints.
   -> (forall x. EveryTF cs x => x -> Property)  -- ^ Property predicate.
@@ -190,7 +189,7 @@ prettyValidateWith f x =
       , ppJSONString (toJSON schema)
       ]
   where
-    ppJSONString = TL.unpack . TL.decodeUtf8 . encodePretty
+    ppJSONString = TL.unpack . TL.decodeUtf8 . P.encodePretty
 
     json   = toJSON x
     schema = toSchema (Proxy :: Proxy a)
@@ -199,6 +198,3 @@ prettyValidateWith f x =
 maybeCounterExample :: Maybe String -> Property
 maybeCounterExample Nothing  = property True
 maybeCounterExample (Just s) = counterexample s (property False)
-
-encodePretty :: ToJSON a => a -> BSL.ByteString
-encodePretty = P.encodePretty' $ P.defConfig { P.confCompare = P.compare }

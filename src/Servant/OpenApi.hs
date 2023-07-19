@@ -52,6 +52,7 @@ import           Servant.OpenApi.Internal.Orphans ()
 -- >>> import Data.Aeson
 -- >>> import Data.OpenApi
 -- >>> import Data.Typeable
+-- >>> import Data.Aeson.Encode.Pretty (encodePretty)
 -- >>> import GHC.Generics
 -- >>> import Servant.API
 -- >>> import Test.Hspec
@@ -115,8 +116,8 @@ import           Servant.OpenApi.Internal.Orphans ()
 --                     }
 --                 },
 --                 "required": [
---                     "name",
---                     "age"
+--                     "age",
+--                     "name"
 --                 ],
 --                 "type": "object"
 --             },
@@ -242,8 +243,8 @@ import           Servant.OpenApi.Internal.Orphans ()
 --                     }
 --                 },
 --                 "required": [
---                     "name",
---                     "age"
+--                     "age",
+--                     "name"
 --                 ],
 --                 "type": "object"
 --             },
@@ -375,8 +376,8 @@ import           Servant.OpenApi.Internal.Orphans ()
 --                     }
 --                 },
 --                 "required": [
---                     "name",
---                     "age"
+--                     "age",
+--                     "name"
 --                 ],
 --                 "type": "object"
 --             },
@@ -512,7 +513,7 @@ import           Servant.OpenApi.Internal.Orphans ()
 -- UserId...
 -- ...
 -- Finished in ... seconds
--- ...3 examples, 0 failures...
+-- 3 examples, 0 failures...
 --
 -- Although servant is great, chances are that your API clients don't use Haskell.
 -- In many cases @swagger.json@ serves as a specification, not a Haskell type.
